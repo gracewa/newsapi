@@ -1,32 +1,40 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 <title>News Headlines</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
+{% import 'macros.html' as macro%}
 <body>
 <div class="jumbotron" style="color:black">
 
-    <h1 style="color:black">
+    <h3 >
 
        Today's Top Headlines
 
-    </h1>
+    </h3>
 
 </div>
 
 
 <div class="container">
+<!-- News Highlights section  -->
+         <div>
+         <div class="col-lg-9">
+         {% for news_highlight in news_highlights %}
 
+             <div class="card">
+                <img src="{{news_highlight.img}}" alt="">
+                <h4>{{ news_highlight.title}}</h4>
+                <P>{{news_highlight.date}}</P>
+                <P>{{news_highlight.description}}</P>
+                <P>{{news_highlight.content}}</P>
 
-    <img src="{{img}}" alt="">
-    <h3>News: </h3> {{title}}
-    <h4>Description: </h4> {{description}}
-
-
-
-</div>
+        {% endfor %}
+         </div>
+        </div>
+        </div>
 
 </body>
 

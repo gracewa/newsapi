@@ -11,38 +11,37 @@
 {% block content %}
 
 <div class="jumbotron" style="color:black">
-
-    <h3>
-
-        Today's Top Headlines
-
-    </h3>
-
-</div>
-<!-- News Search section  -->
-<div class="container">
-    <form class="searchbox">
-        <input type="text" name="news_query" placeholder="Search for News" class="form-control">
-        <input type="submit"  value="Submit" class="btn btn-default">
-    </form>
-    <hr>
+    <div class="row">
+        <h3 class="col-sm-9 text-center">
+            Today's Top Headlines
+        </h3>
+        <!-- News Search section  -->
+        <div class="col-sm-3 text-center">
+            <form class="searchbox">
+                <input type="text" name="news_query" placeholder="Search for News" class="form-control">
+                <input type="submit" value="Submit" class="btn btn-default">
+            </form>
+        </div>
+    </div>
 </div>
 
 <div class="container">
     <!-- News Highlights section  -->
     <div>
-        <div class="col-lg-9">
+        <div class="col-md-9">
             {% for news_highlight in news_highlights %}
 
             <div class="card">
                 <img src="{{news_highlight.img}}" alt="">
-                <h4>{{ news_highlight.title}}</h4>
+                <h4>
+                    <a href="{{news_highlight.url}}" target="_blank">{{news_highlight.title}}</a>
+                </h4>
                 <P>{{news_highlight.date}}</P>
                 <P>{{news_highlight.description}}</P>
                 <P>{{news_highlight.content}}</P>
-
-            {% endfor %}
             </div>
+            {% endfor %}
+
         </div>
     </div>
 

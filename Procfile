@@ -1,1 +1,1 @@
-web: waitress app:app
+web: gunicorn manage:app

@@ -66,7 +66,32 @@ def search_news(news_keyword):
 
         if search_news_response['articles']:
             search_news_list = search_news_response['articles']
-            search_news_results = process_results(search_news_list)
+            search_news_results = search_process_results(search_news_list)
 
+
+    return search_news_results
+
+def search_process_results(search_news_list):
+    '''
+    Function  that processes the search result and transform them to a list of Objects
+
+    Args:
+        search_news_list: A list of dictionaries that contain movie details
+
+    Returns :
+        search_news_results: A list of movie objects
+    '''
+    search_news_results = []
+    for search_item in search_news_list:
+        title = search_item.get('title')
+        description = search_item.get('description')
+        date = search_item.get('publishedAt')
+        url = search_item.get('url')
+        img = search_item.get('urlToImage')
+        content = search_item.get('content')
+
+        if img:
+            search_news_object = News(title,description,date,img, url, content)
+            search_news_results.append(search_news_object)
 
     return search_news_results

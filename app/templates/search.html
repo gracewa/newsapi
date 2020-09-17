@@ -2,20 +2,27 @@
 {% import 'macros.html' as macro%}
 
 {% block content %}
-    <div class="container">
+<div class="jumbotron text-justify">
+    <h1>{{title}}</h1>
+    <h3> Found {{ searched_news| count }} matches </h3>
+</div>
 
-        <div class="row">
+<div class="container">
+    <div class="row">
+    <div class="col-md-12">
+        {% for searched_new in searched_news %}
 
-            <h3> Found {{ searched_news| count }} matches </h3>
-            <hr>
-            {% for searched_new in searched_news %}
-            <img src="{{searched_new.urlToImage}}" alt="">
-            <h4>{{searched_new.title}}</h4>
-            <P>{{searched_new.publishedAt}}</P>
-            <h6>{{searched_new.description}}</h6>
-            <P>{{searched_new.content}}</P>
-            {% endfor %}
+        <div class="card">
+        <img src="{{searched_new.img}}" alt="">
+        <h4>
+            <a href="{{searched_new.url}}" target="_blank">{{searched_new.title}}</a>
+        </h4>
+        <P>{{searched_new.date}}</P>
+        <h6>{{searched_new.description}}</h6>
+        <P>{{searched_new.content}}</P>
         </div>
-
+        {% endfor %}
     </div>
+    </div>
+</div>
 {% endblock %}

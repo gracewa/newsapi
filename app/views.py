@@ -28,5 +28,5 @@ def search(news_keyword):
     news_keyword_list = news_keyword.split(" ")
     news_keyword_format = "+".join(news_keyword_list)
     searched_news = search_news(news_keyword_format)
-    title = f'search results for {news_keyword}'
-    return render_template('search.html', searched_news=searched_news)
+    title = f'Search Results for "{news_keyword}"'
+    return render_template('search.html', title=title, searched_news=searched_news)

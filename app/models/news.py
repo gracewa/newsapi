@@ -10,3 +10,4 @@ class News:
         self.url = url
         self.img = img
         self.content = content
+

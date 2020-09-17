@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+{% block content %}
+    <div class="container">
+
+        <div class="row">
+
+            <h3> Found {{ searched_news| count }} matches </h3>
+            <hr>
+            {% for searched_new in searched_news %}
+            <img src="{{searched_new.urlToImage}}" alt="">
+            <h4>{{searched_new.title}}</h4>
+            <P>{{searched_new.publishedAt}}</P>
+            <h6>{{searched_new.description}}</h6>
+            <P>{{searched_new.content}}</P>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,7 +1,8 @@
-from flask import render_template
+from flask import render_template,request,redirect,url_for
 from app import app
 from newsapi import NewsApiClient
-from .request import get_news
+from .request import get_news, search_news
+
 
 
 # Views
@@ -12,6 +13,20 @@ def index():
     '''
     news_highlights = get_news('ng')
     title = 'Get the Latest News Fast'
+    search_new = request.args.get('news_query')
 
-    return render_template('index.html', title=title, news_highlights=news_highlights)
+    if search_new:
+        return redirect(url_for('search', news_keyword=search_new))
+    else:
+        return render_template('index.html', title=title, news_highlights=news_highlights)
 
+@app.route('/search/<news_keyword>')
+def search(news_keyword):
+    '''
+    View function to display the search results
+    '''
+    news_keyword_list = news_keyword.split(" ")
+    news_keyword_format = "+".join(news_keyword_list)
+    searched_news = search_news(news_keyword_format)
+    title = f'search results for {news_keyword}'
+    return render_template('search.html', searched_news=searched_news)

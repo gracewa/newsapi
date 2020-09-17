@@ -9,11 +9,14 @@ api_key = app.config['NEWS_API_KEY']
 # Getting the news base url
 base_url_news = app.config["NEWS_API_BASE_URL"]
 
+# Getting the news base url
+base_search_url_news = app.config['NEWS_API_SEARCH_URL']
+
 def get_news(country):
     '''
     Function that gets the json response to our url request
     '''
-    get_news_url = base_url_news.format(country,api_key)
+    get_news_url = base_url_news.format(country)
 
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
@@ -52,3 +55,18 @@ def process_results(news_list):
             news_results.append(news_object)
 
     return news_results
+
+def search_news(news_keyword):
+    search_news_url = base_search_url_news.format(news_keyword)
+    with urllib.request.urlopen(search_news_url) as url:
+        search_news_data = url.read()
+        search_news_response = json.loads(search_news_data)
+
+        search_news_results = None
+
+        if search_news_response['articles']:
+            search_news_list = search_news_response['articles']
+            search_news_results = process_results(search_news_list)
+
+
+    return search_news_results

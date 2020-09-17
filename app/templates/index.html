@@ -1,5 +1,12 @@
 {% extends 'base.html'%}
 
+<!-- Styles block -->
+
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
 <!-- Content block -->
 {% block content %}
 
@@ -12,7 +19,14 @@
     </h3>
 
 </div>
-
+<!-- News Search section  -->
+<div class="container">
+    <form class="searchbox">
+        <input type="text" name="news_query" placeholder="Search for News" class="form-control">
+        <input type="submit"  value="Submit" class="btn btn-default">
+    </form>
+    <hr>
+</div>
 
 <div class="container">
     <!-- News Highlights section  -->
@@ -27,9 +41,9 @@
                 <P>{{news_highlight.description}}</P>
                 <P>{{news_highlight.content}}</P>
 
-                {% endfor %}
+            {% endfor %}
             </div>
         </div>
     </div>
 
-{% endblock%}
+    {% endblock%}

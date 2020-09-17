@@ -14,6 +14,8 @@ app.config.from_pyfile('config.py')
 bootstrap = Bootstrap(app)
 
 from app import views
+from app import error
+
 
 if __name__ == '__main__':
     app.run(debug=True)

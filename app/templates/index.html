@@ -1,17 +1,13 @@
+{% extends 'base.html'%}
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>News Headlines</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-{% import 'macros.html' as macro%}
-<body>
+<!-- Content block -->
+{% block content %}
+
 <div class="jumbotron" style="color:black">
 
-    <h3 >
+    <h3>
 
-       Today's Top Headlines
+        Today's Top Headlines
 
     </h3>
 
@@ -19,23 +15,21 @@
 
 
 <div class="container">
-<!-- News Highlights section  -->
-         <div>
-         <div class="col-lg-9">
-         {% for news_highlight in news_highlights %}
+    <!-- News Highlights section  -->
+    <div>
+        <div class="col-lg-9">
+            {% for news_highlight in news_highlights %}
 
-             <div class="card">
+            <div class="card">
                 <img src="{{news_highlight.img}}" alt="">
                 <h4>{{ news_highlight.title}}</h4>
                 <P>{{news_highlight.date}}</P>
                 <P>{{news_highlight.description}}</P>
                 <P>{{news_highlight.content}}</P>
 
-        {% endfor %}
-         </div>
+                {% endfor %}
+            </div>
         </div>
-        </div>
+    </div>
 
-</body>
-
-</html>
+{% endblock%}

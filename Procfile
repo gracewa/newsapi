@@ -1,1 +1,1 @@
-web: waitress manage:app 
+web: waitress serve:app

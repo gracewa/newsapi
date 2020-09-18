@@ -6,7 +6,7 @@ from .request import get_news, search_news, get_sources, top_headlines
 
 
 # Views
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     '''
         View root page function that returns the index page and its data
@@ -25,7 +25,7 @@ def index():
         return render_template('index.html', title=title, news_highlights=news_highlights, news_sources=news_sources)
 
 
-@app.route('/search/<news_keyword>')
+@app.route('/search/<news_keyword>', methods=['GET', 'POST'])
 def search(news_keyword):
     '''
     View function to display the search results
@@ -37,7 +37,7 @@ def search(news_keyword):
     return render_template('search.html', title=title, searched_news=searched_news)
 
 
-@app.route('/sources/<source_id>')
+@app.route('/sources/<source_id>', methods=['GET', 'POST'])
 def source_top_headlines(source_id):
     headlines = top_headlines(source_id)
 

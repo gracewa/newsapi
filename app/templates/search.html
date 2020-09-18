@@ -9,11 +9,11 @@
 
 <div class="container">
     <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-10 offset-md-1">
         {% for searched_new in searched_news %}
 
         <div class="card">
-        <img src="{{searched_new.img}}" alt="">
+        <img class="embed-responsive embed-responsive-1by1" src="{{searched_new.img}}" alt="">
         <h4>
             <a href="{{searched_new.url}}" target="_blank">{{searched_new.title}}</a>
         </h4>

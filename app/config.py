@@ -6,7 +6,7 @@ class Config:
     NEWS_API_KEY = 'dbfa40f35ae24c188d04adfd4ebbd2a3'
     NEWS_API_SEARCH_URL = 'https://newsapi.org/v2/everything?q={}&apiKey=dbfa40f35ae24c188d04adfd4ebbd2a3'
     NEWS_API_SOURCE_URL = 'https://newsapi.org/v2/sources?apiKey=dbfa40f35ae24c188d04adfd4ebbd2a3'
-
+    TOP_HEADLINES_URL = 'https://newsapi.org/v2/top-headlines?sources={}&sortBy=latest&apiKey=dbfa40f35ae24c188d04adfd4ebbd2a3'
 
 
 

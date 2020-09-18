@@ -28,12 +28,12 @@
 <div class="container">
     <!-- News Highlights section  -->
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-10">
 
             {% for news_highlight in news_highlights %}
 
             <div class="card">
-                <img src="{{news_highlight.img}}" alt="">
+                <img class="embed-responsive embed-responsive-1by1" src="{{news_highlight.img}}" alt="">
                 <h4>
                     <a href="{{news_highlight.url}}" target="_blank">{{news_highlight.title}}</a>
                 </h4>
@@ -46,16 +46,16 @@
         </div>
 
 
-    <div class="col-md-3">
-        <h3 class="text-center">Select a news source</h3>
+        <div class="col-md-2">
+            <h4 class="text-center">Click to Select a News Source</h4>
+
             {% for source in news_sources %}
-            <div class="checkbox">
-            <h4><label><input type="radio" value="{{source.id}}" name="selected_source"> {{source.name}}</label></h4>
-            <p>{{source.description}}</p>
-            </div>
+            <a href="/sources/{{source.id}}">
+            <h6>{{source.name}}</h6>
+            </a>
             {% endfor %}
         </div>
     </div>
-    </div>
+</div>
 
-    {% endblock%}
+{% endblock%}

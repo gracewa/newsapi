@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="text-center">Latest News from {{source_id}}</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+    <div class="col-md-10 offset-md-1">
+
+        {% for headline in headlines %}
+        <div class="card">
+        <img class="embed-responsive embed-responsive-1by1" src="{{headline.img}}" alt="">
+        <h4>
+            <a href="{{headline.url}}" target="_blank">{{headline.title}}</a>
+        </h4>
+        <P>{{headline.date}}</P>
+        <h6>{{headline.description}}</h6>
+        <P>{{headline.content}}</P>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+</div>
+{% endblock %}

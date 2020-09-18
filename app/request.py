@@ -1,6 +1,7 @@
 from app import app
 import urllib.request,json
 from .models import news, sources
+
 News = news.News
 Sources = sources.Sources
 
@@ -15,6 +16,10 @@ base_url_search = app.config['NEWS_API_SEARCH_URL']
 
 # Getting the sources base url
 base_url_sources = app.config['NEWS_API_SOURCE_URL']
+
+# Getting the top headlines base url
+base_url_headlines = app.config['TOP_HEADLINES_URL']
+
 
 def get_news(country):
     '''
@@ -134,3 +139,45 @@ def sources_process_results(sources_list):
         sources_results.append(sources_object)
 
     return sources_results
+
+
+def top_headlines(selected_source):
+    top_headlines_url = base_url_headlines.format(selected_source)
+    with urllib.request.urlopen(top_headlines_url) as url:
+        top_headlines_data = url.read()
+        top_headlines_response = json.loads(top_headlines_data)
+
+        top_headlines_results = None
+
+        if top_headlines_response['articles']:
+            top_headlines_list = top_headlines_response['articles']
+            top_headlines_results = top_headlines_process_results(top_headlines_list)
+
+
+    return top_headlines_results
+
+
+def top_headlines_process_results(top_headlines_list):
+    '''
+    Function  that processes the search result and transform them to a list of Objects
+
+    Args:
+        search_news_list: A list of dictionaries that contain movie details
+
+    Returns :
+        search_news_results: A list of objects
+    '''
+    top_headlines_results = []
+    for item in top_headlines_list:
+        title = item.get('title')
+        description = item.get('description')
+        date = item.get('publishedAt')
+        url = item.get('url')
+        img = item.get('urlToImage')
+        content = item.get('content')
+
+        if img:
+            top_headlines_object = News(title,description,date,img, url, content)
+            top_headlines_results.append(top_headlines_object)
+
+    return top_headlines_results

@@ -2,3 +2,5 @@ virtual/
 *.pyc
 instance/
 app/templates/macros.html
+!/manage.html
+!/manage.html

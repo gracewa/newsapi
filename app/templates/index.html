@@ -27,8 +27,9 @@
 
 <div class="container">
     <!-- News Highlights section  -->
-    <div>
+    <div class="row">
         <div class="col-md-9">
+
             {% for news_highlight in news_highlights %}
 
             <div class="card">
@@ -43,6 +44,18 @@
             {% endfor %}
 
         </div>
+
+
+    <div class="col-md-3">
+        <h3 class="text-center">Select a news source</h3>
+            {% for source in news_sources %}
+            <div class="checkbox">
+            <h4><label><input type="radio" value="{{source.id}}" name="selected_source"> {{source.name}}</label></h4>
+            <p>{{source.description}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
     </div>
 
     {% endblock%}

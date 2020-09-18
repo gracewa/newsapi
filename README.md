@@ -2,7 +2,7 @@
 
 [![news.png](https://i.ibb.co/jRTdRM3/news-site.png)
 
-##Live Link
+## Live Link
 https://newsapiip.herokuapp.com/
 
 ## Description
